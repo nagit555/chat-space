@@ -1,0 +1,15 @@
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+/Users/na/.rvm/rubies/ruby-2.4.1/bin/ruby -I /Users/na/.rvm/rubies/ruby-2.4.1/lib/ruby/site_ruby/2.4.0 -r ./siteconf20190210-99257-1n74wh8.rb extconf.rb
+creating Makefile
+
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.bundle
+
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20190210-99257-1l1yhgn/bindex

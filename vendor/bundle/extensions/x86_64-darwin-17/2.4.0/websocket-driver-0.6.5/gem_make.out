@@ -1,0 +1,15 @@
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+/Users/na/.rvm/rubies/ruby-2.4.1/bin/ruby -I /Users/na/.rvm/rubies/ruby-2.4.1/lib/ruby/site_ruby/2.4.0 -r ./siteconf20190210-99257-19g6def.rb extconf.rb
+creating Makefile
+
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+
+current directory: /Users/na/TechExpert/git/chat-space/vendor/bundle/gems/websocket-driver-0.6.5/ext/websocket-driver
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20190210-99257-1yq8c3u

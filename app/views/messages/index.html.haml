@@ -8,8 +8,8 @@
         .SidebarMenu__user-name
           = current_user.name
         .SidebarMenu__icons
-          = link_to fa_icon("edit"), edit_user_path(current_user.id)
-          = fa_icon("cog")
+          = link_to fa_icon("edit"), new_group_path
+          = link_to fa_icon("cog"), edit_user_path(current_user.id)
       .SidebarGroup
         .SidebarGroup__group-name
           chat1

@@ -6,19 +6,16 @@ class ApplicationController < ActionController::Base
 
   # deviseのサインイン後の遷移
   def after_sign_up_path_for(resource)
-    flash[:success] = "アカウントが登録されました。"
     root_path
   end
 
   # deviseのサインイン後の遷移
   def after_sign_in_path_for(resource)
-    flash[:success] = "ログインしました。"
     root_path
   end
 
   # deviseのサインアウト後の遷移
   def after_sign_out_path_for(resource)
-    flash[:success] = "ログアウトしました。"
     root_path
   end
 

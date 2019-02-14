@@ -4,11 +4,8 @@ class UsersController < ApplicationController
 
   def update
     if current_user.update(user_params)
-      flash[:success] = "プロフィールが更新されました。"
+      flash[:notice] = "プロフィールが更新されました。"
       redirect_to root_path
-    else
-      flash[:danger] = "プロフィールを更新できませんでした"
-      render :edit
     end
   end
 

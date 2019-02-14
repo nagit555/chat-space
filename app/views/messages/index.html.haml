@@ -6,9 +6,9 @@
     .Sidebar
       .SidebarMenu
         .SidebarMenu__user-name
-          michael hartl
+          = current_user.name
         .SidebarMenu__icons
-          = fa_icon("edit")
+          = link_to fa_icon("edit"), edit_user_path(current_user.id)
           = fa_icon("cog")
       .SidebarGroup
         .SidebarGroup__group-name

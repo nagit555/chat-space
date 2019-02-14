@@ -1,0 +1,100 @@
+.GroupContent {
+  height: 100vh;
+  width: calc( 100vw - #{$sidebar_width});
+  display: flex;
+  flex-direction: column;
+  float: right;
+}
+
+.GroupInfo {
+  background-color: #ffffff;
+  height: $bar_top_height;
+  box-sizing: border-box;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-bottom: solid 1px;
+  border-bottom-color: #eeeeee;
+  &__group-name-and-members {
+    float: left;
+  }
+  &__group-name {
+    margin-top: 35px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    color: #333333;
+  }
+  &__group-members {
+    font-size: 12px;
+    color: #999999;
+  }
+  &__edit-button {
+    border: solid 1px;
+    border-color: #39adf0;
+    color: #39adf0;
+    height: 40px;
+    float: right;
+    margin-top: 28px;
+    box-sizing: border-box;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+}
+
+.GroupMessage {
+  background-color: #fafafa;
+  height: calc( 100vh - #{$bar_top_height} - #{$group_post_height} );
+  box-sizing: border-box;
+  padding: 46px 0 0 40px;
+  &__user-name {
+    font-size: 16px;
+    color: #434A54;
+    font-weight: bold;
+  }
+  &__posted-at {
+    font-size: 12px;
+    color: #999999;
+    margin-left: 10px;
+  }
+  &__content {
+    font-size: 14px;
+    color: #434A54;
+    margin-top: 10px;
+  }
+}
+
+.GroupPost {
+  background-color: #dddddd;
+  height: $group_post_height;
+  box-sizing: border-box;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  &__text-form {
+    height: 50px;
+    width: calc( 100% - #{$message_send_button_width} - 15px );
+    font-size: 16px;
+    color: #434A54;
+    float: left;
+    border: none;
+    box-sizing: border-box;
+    padding-left: 10px;
+    margin-right: 15px;
+  }
+  &__picture-button {
+    position: absolute;
+    font-size: 21px;
+    right: calc( 40px + #{$message_send_button_width} + 15px + 10px );
+  }
+  &__send-button {
+    float: right;
+    width: $message_send_button_width;
+    height: 50px;
+    background-color: #38AEF0;
+    color: #ffffff;
+    text-decoration: none;
+  }
+}

@@ -13,7 +13,7 @@
         .SidebarGroup__group-content
           - if join_group.group.messages.length != 0
             - if join_group.group.messages.last.body != ""
-              = join_group.group.messages.last.body
+              = join_group.group.messages.last.body.truncate(20)
             - else
               画像が投稿されました。
           - else

@@ -1,0 +1,8 @@
+- if @member.errors.any?
+  .chat-group-form__errors
+    %h2
+      入力した内容にエラーが#{@member.errors.count}件あります
+      %ul
+        - @member.errors.full_messages.each do |message|
+          %li
+            = message

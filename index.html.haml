@@ -23,10 +23,10 @@
       .GroupInfo
         .GroupInfo__group-name-and-members
           .GroupInfo__group-name
-            = @group.name
+            test group
           .GroupInfo__group-members
-            Member : #{@group.users.map{|user| user.name}.join(" ")}
-        = link_to 'Edit', edit_group_path(@group), class: "GroupInfo__edit-button"
+            Member : michael hartl
+        = link_to 'Edit', "#", class: "GroupInfo__edit-button"
       .GroupMessage
         %span.GroupMessage__user-name
           aga

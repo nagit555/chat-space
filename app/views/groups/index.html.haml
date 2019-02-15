@@ -23,10 +23,10 @@
       .GroupInfo
         .GroupInfo__group-name-and-members
           .GroupInfo__group-name
-            test group
+            = @group.name
           .GroupInfo__group-members
-            Member : michael hartl
-        = link_to 'Edit', "#", class: "GroupInfo__edit-button"
+            Member : #{@group.users.map{|user| user.name}.join(" ")}
+        = link_to 'Edit', edit_group_path(@group), class: "GroupInfo__edit-button"
       .GroupMessage
         %span.GroupMessage__user-name
           aga
@@ -42,4 +42,3 @@
         / = form_for @message do |f|
         /   = f.text_field :message, class: "GroupPost__text-form"
         /   = f.submit "Send", class: "GroupPost__send-button"
-

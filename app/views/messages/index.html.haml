@@ -3,6 +3,10 @@
   %head
     %meta{charset: "utf-8"}
   %body
+    :javascript
+      $(function(){
+        $(".GroupMessage").scrollTop($(".GroupMessage")[0].scrollHeight);
+      });
     = render "./layouts/sidebar"
 
     .GroupContent
@@ -26,7 +30,7 @@
 
       = form_for(@message, url: group_messages_path(@group.id)) do |f|
         .GroupPost
-          = f.text_field :body, placeholder: "type a message", class: "GroupPost__text-form"
+          = f.text_field :body, placeholder: "type a message", class: "GroupPost__text-form", autofocus: true
           = f.label :image, class: "GroupPost__picture-button" do
             = fa_icon("image")
             = f.file_field :image, class: "fileInput",style: "display:none;"

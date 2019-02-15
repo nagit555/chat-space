@@ -11,4 +11,10 @@
         .SidebarGroup__group-name
           = join_group.group.name
         .SidebarGroup__group-content
-          not implemented
+          - if join_group.group.messages.length != 0
+            - if join_group.group.messages.last.body != ""
+              = join_group.group.messages.last.body
+            - else
+              画像が投稿されました。
+          - else
+            no messages

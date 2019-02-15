@@ -1,4 +1,9 @@
 class GroupsController < ApplicationController
+
+  def index
+    @join_groups = Member.where(user_id: current_user.id)
+  end
+
   def new
     @group = Group.new
   end
@@ -12,9 +17,7 @@ class GroupsController < ApplicationController
         flash[:alert] = "チャットメンバーを選んでください"
         render :new
       else
-        group_params[:user_ids].each.with_index(1) do |user_id, i|
-          member = Member.create(user_id: user_id, group_id: @group.id)
-        end
+        @group.users = User.where(id: group_params[:user_ids])
         redirect_to root_path, notice: 'グループを作成しました。'
       end
     else
@@ -23,9 +26,17 @@ class GroupsController < ApplicationController
   end
 
   def edit
+    @group = Group.find(params[:id])
   end
 
   def update
+    @group = Group.find(params[:id])
+    if @group.update(name: group_params[:name])
+      @group.users = User.where(id: group_params[:user_ids])
+      redirect_to root_path, notice: "グループ情報を更新しました。"
+    else
+      render :edit
+    end
   end
 
   private

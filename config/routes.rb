@@ -7,5 +7,5 @@ Rails.application.routes.draw do
   end
   resources :members  , only: [:create, :update]
 
-  root 'messages#index'
+  root 'groups#index'
 end

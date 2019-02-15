@@ -1,0 +1,45 @@
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: "utf-8"}
+  %body
+    .Sidebar
+      .SidebarMenu
+        .SidebarMenu__user-name
+          = current_user.name
+        .SidebarMenu__icons
+          = link_to fa_icon("edit"), new_group_path
+          = link_to fa_icon("cog"), edit_user_path(current_user.id)
+      - @join_groups.each do |join_group|
+        = link_to group_messages_path(join_group.group.id) do
+          .SidebarGroup
+            .SidebarGroup__group-name
+              = join_group.group.name
+            .SidebarGroup__group-content
+              not implemented
+
+
+    .GroupContent
+      .GroupInfo
+        .GroupInfo__group-name-and-members
+          .GroupInfo__group-name
+            test group
+          .GroupInfo__group-members
+            Member : michael hartl
+        = link_to 'Edit', "#", class: "GroupInfo__edit-button"
+      .GroupMessage
+        %span.GroupMessage__user-name
+          aga
+        %span.GroupMessage__posted-at
+          2019/02/14(Thu) 01:39:07
+        .GroupMessage__content
+          hey men
+      .GroupPost
+        %input{placeholder: "type a message", class: "GroupPost__text-form"}
+        %span.GroupPost__picture-button
+          = fa_icon("image")
+        %input{value: "Send", type: "submit", class: "GroupPost__send-button"}
+        / = form_for @message do |f|
+        /   = f.text_field :message, class: "GroupPost__text-form"
+        /   = f.submit "Send", class: "GroupPost__send-button"
+

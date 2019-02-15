@@ -10,23 +10,13 @@
         .SidebarMenu__icons
           = link_to fa_icon("edit"), new_group_path
           = link_to fa_icon("cog"), edit_user_path(current_user.id)
-      .SidebarGroup
-        .SidebarGroup__group-name
-          chat1
-        .SidebarGroup__group-content
-          hey
+      - @join_groups.each do |join_group|
+        .SidebarGroup
+          .SidebarGroup__group-name
+            = join_group.group.name
+          .SidebarGroup__group-content
+            not implemented
 
-      .SidebarGroup
-        .SidebarGroup__group-name
-          chat2
-        .SidebarGroup__group-content
-          whats up
-
-      .SidebarGroup
-        .SidebarGroup__group-name
-          chat3
-        .SidebarGroup__group-content
-          good luck
 
     .GroupContent
       .GroupInfo

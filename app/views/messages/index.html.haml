@@ -14,18 +14,21 @@
             Member : #{@group.users.map{|user| user.name}.join(" ")}
         = link_to 'Edit', edit_group_path(@group), class: "GroupInfo__edit-button"
       .GroupMessage
-        %span.GroupMessage__user-name
-          aga
-        %span.GroupMessage__posted-at
-          2019/02/14(Thu) 01:39:07
-        .GroupMessage__content
-          hey men
-      .GroupPost
-        %input{placeholder: "type a message", class: "GroupPost__text-form"}
-        %span.GroupPost__picture-button
-          = fa_icon("image")
-        %input{value: "Send", type: "submit", class: "GroupPost__send-button"}
-        / = form_for @message do |f|
-        /   = f.text_field :message, class: "GroupPost__text-form"
-        /   = f.submit "Send", class: "GroupPost__send-button"
+        - @messages.each do |message|
+          .UserMessage
+            %span.UserMessage__user-name
+              = message.user.name
+            %span.UserMessage__posted-at
+              = message.created_at
+            .UserMessage__content
+              = message.body
+              = image_tag message.image
 
+      = form_for(@message, url: group_messages_path(@group.id)) do |f|
+        .GroupPost
+          = f.text_field :body, placeholder: "type a message", class: "GroupPost__text-form"
+          = f.label :image, class: "GroupPost__picture-button" do
+            = fa_icon("image")
+            = f.file_field :image, class: "fileInput",style: "display:none;"
+          / %span.GroupPost__picture-button
+          = f.submit "Send", class: "GroupPost__send-button"

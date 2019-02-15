@@ -48,6 +48,11 @@
   height: calc( 100vh - #{$bar_top_height} - #{$group_post_height} );
   box-sizing: border-box;
   padding: 46px 0 0 40px;
+  overflow: scroll;
+}
+
+.UserMessage {
+  margin-bottom: 40px;
   &__user-name {
     font-size: 16px;
     color: #434A54;

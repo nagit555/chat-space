@@ -1,0 +1,34 @@
+!!!
+%html{lang: "ja"}
+  %head
+    %meta{charset: "utf-8"}
+  %body
+    = render "./layouts/sidebar"
+
+    .GroupContent
+      .GroupInfo
+        .GroupInfo__group-name-and-members
+          .GroupInfo__group-name
+            = @group.name
+          .GroupInfo__group-members
+            Member : #{@group.users.map{|user| user.name}.join(" ")}
+        = link_to 'Edit', edit_group_path(@group), class: "GroupInfo__edit-button"
+      .GroupMessage
+        - @messages.each do |message|
+          .UserMessage
+            %span.UserMessage__user-name
+              = message.user.name
+            %span.UserMessage__posted-at
+              = message.created_at
+            .UserMessage__content
+              = message.body
+              = image_tag message.image
+
+      = form_for(@message, url: group_messages_path(@group.id)) do |f|
+        .GroupPost
+          = f.text_field :body, placeholder: "type a message", class: "GroupPost__text-form"
+          = f.label :image, class: "GroupPost__picture-button" do
+            = fa_icon("image")
+            = f.file_field :image, class: "fileInput",style: "display:none;"
+          / %span.GroupPost__picture-button
+          = f.submit "Send", class: "GroupPost__send-button"

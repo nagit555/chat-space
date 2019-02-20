@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe Message do
   describe '#create' do
-    describe 'success' do
+    context 'success' do
       it "is valid with body" do
         user = create(:user)
         group = create(:group)
@@ -27,7 +27,7 @@ describe Message do
       end
     end
 
-    describe 'failure' do
+    context 'failure' do
       it "is invalid without body and image" do
         message = build(:message, body: "", image: "")
         message.valid?

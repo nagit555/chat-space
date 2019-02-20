@@ -61,4 +61,9 @@ RSpec.configure do |config|
 
   # factory_girl
   config.include FactoryGirl::Syntax::Methods
+
+  # for devise
+  Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ControllerMacros, type: :controller
 end

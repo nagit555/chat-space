@@ -2,8 +2,9 @@ require 'rails_helper'
 
 describe MessagesController, type: :controller do
 
-  let(:group) { create(:group) }
-  let(:user)  { create(:user) }
+  let(:group)   { create(:group) }
+  let(:user)    { create(:user) }
+  let(:message) { create(:message) }
 
   describe 'GET #index' do
     context "logged in" do
@@ -40,30 +41,45 @@ describe MessagesController, type: :controller do
     end
   end
 
-  # describe 'GET #edit' do
-  #   it "assigns the requested tweet to @tweet" do
-  #     tweet = create(:tweet)
-  #     get :edit, params: { id: tweet }
-  #     expect(assigns(:tweet)).to eq tweet
-  #   end
+  describe 'POST #create' do
+    context 'logged in and succeed in post' do
+      before do
+        login(user)
+      end
 
-  #   it "renders the :edit template" do
-  #     tweet = create(:tweet)
-  #     get :edit, params: { id: tweet }
-  #     expect(response).to render_template :edit
-  #   end
-  # end
+      it "is succeeded in save a message" do
+        expect{post :create, params: { message: attributes_for(:message), group_id: group.id }}.to change(Message, :count).by(1)
+      end
 
-  # describe 'GET #index' do
-  #   it "populates an array of tweets ordered by created_at DESC" do
-  #     tweets = create_list(:tweet, 3)     # tweetリソースを複数作成
-  #     get :index
-  #     expect(assigns(:tweets)).to match(tweets.sort{ |a, b| b.created_at <=> a.created_at })
-  #   end
+      it "is redirect to messages#index" do
+        post :create, params: { message: attributes_for(:message), group_id: group.id }
+        expect(response).to redirect_to(group_messages_path(group.id))
+      end
+    end
 
-  #   it "renders the :index template" do
-  #     get :index
-  #     expect(response).to render_template :index
-  #   end
-  # end
+    context 'logged in and fail to post' do
+      before do
+        login(user)
+      end
+
+      it "is failed to save a message" do
+        expect{post :create, params: { message: attributes_for(:message, { body: nil, image: nil }), group_id: group.id }}.to change(Message, :count).by(0)
+      end
+
+      it "is redirect to messages#index" do
+        post :create, params: { message: attributes_for(:message, { body: nil, image: nil }), group_id: group.id }
+        expect(response).to redirect_to(group_messages_path(group.id))
+      end
+    end
+
+    context 'not logged in' do
+      before do
+        post :create, params: { message: attributes_for(:message), group_id: group.id }
+      end
+
+      it "is redirect to sign_in path" do
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
+  end
 end

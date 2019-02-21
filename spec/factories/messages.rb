@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :message do
     body        "wow, cool"
-    image       Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/image/image.jpg'))
+    image       File.open("#{Rails.root}/spec/fixtures/image/over.jpg")
     user
     group
   end

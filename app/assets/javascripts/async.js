@@ -10,7 +10,7 @@ $(function() {
     return `${year}-${month}-${date} ${hours}:${minutes}:${seconds} UTC`;
   }
 
-  function messageHTML(message) {
+  function buildMessageHTML(message) {
     imageElement = message.image.url ? `<img src="${message.image.url}">` : ""
     message_date = convertTimestamp(new Date(message.created_at));
     var html = `<div class="UserMessage">
@@ -40,8 +40,8 @@ $(function() {
       processData: false,
       contentType: false
     })
-    .done(function(data) {
-      var html = messageHTML(data);
+    .done(function(postedMessage) {
+      var html = buildMessageHTML(postedMessage);
       $('.GroupMessage').append(html);
       $('.GroupPost__text-form').trigger('reset');
     })

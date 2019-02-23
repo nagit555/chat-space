@@ -26,7 +26,7 @@ $(function() {
   }
 
   $('#user-search-field').on('keyup', function() {
-    var inputQuery =$(this).val();
+    var inputQuery = $(this).val();
     if (inputQuery === "") {
       $('#user-search-result').empty();
       return false;

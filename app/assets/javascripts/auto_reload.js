@@ -1,4 +1,5 @@
 $(function() {
+  if ($('.UserMessage').length === 0) { return false; }
 
   function convertTimestamp(timestamp) {
     year = timestamp.getFullYear();
@@ -10,7 +11,7 @@ $(function() {
     return `${year}-${month}-${date} ${hours}:${minutes}:${seconds} UTC`;
   }
 
-  function messageHTML(message) {
+  function buildMessageHTML(message) {
     imageElement = message.image.url ? `<img src="${message.image.url}">` : ""
     message_date = convertTimestamp(new Date(message.created_at));
     var html = `<div class="UserMessage">
@@ -28,28 +29,28 @@ $(function() {
     return html;
   }
 
-  $('.GroupPost').on('submit', function(e) {
-    //e.preventDefault();
-    var formData = new FormData(this);
-    var url = $(this).attr('action');
+  function reloadMessages() {
     $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
-      dataType: 'json',
-      processData: false,
-      contentType: false
+      url: location.href,
+      type: "GET",
+      data: "",
+      dataType: 'json'
     })
-    .done(function(postedMessage) {
-      var html = messageHTML(postedMessage);
-      $('.GroupMessage').append(html);
-      $('.GroupPost__text-form').trigger('reset');
+    .done(function(messages) {
+      var countNewMessages = messages.length - $('.UserMessage').length;
+      var newMessages = countNewMessages ? messages.slice(-countNewMessages) : "";
+      if (newMessages.length != 0) {
+        newMessages.forEach(function(newMessage) {
+          var messageHtml = buildMessageHTML(newMessage);
+          $('.GroupMessage').append(messageHtml)
+        })
+        $('.GroupMessage').animate({scrollTop: $('.GroupMessage')[0].scrollHeight}, 'fast');
+      }
     })
     .fail(function() {
       alert('error');
     })
-    $('.GroupMessage').animate({scrollTop: $('.GroupMessage')[0].scrollHeight}, 'fast');
-    $('.GroupPost__text-form').focus();
-    return false;
-  });
-});
+  }
+
+  setInterval(reloadMessages, 5000);
+})

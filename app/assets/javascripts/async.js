@@ -11,11 +11,7 @@ $(function() {
   }
 
   function messageHTML(message) {
-    if (message.image.url == null) {
-      imageElement = ""
-    } else {
-      imageElement = `<img src="${message.image.url}">`
-    }
+    imageElement = message.image.url ? `<img src="${message.image.url}">` : ""
     message_date = convertTimestamp(new Date(message.created_at));
     var html = `<div class="UserMessage">
                   <span class="UserMessage__user-name">
@@ -46,8 +42,8 @@ $(function() {
     })
     .done(function(data) {
       var html = messageHTML(data);
-      $('.GroupMessage').append(html)
-      $('.GroupPost__text-form').val('')
+      $('.GroupMessage').append(html);
+      $('.GroupPost__text-form').trigger('reset');
     })
     .fail(function() {
       alert('error');

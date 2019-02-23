@@ -10,9 +10,8 @@ class GroupsController < ApplicationController
 
   def create
     @group = Group.new(name: group_params[:name])
-    # binding.pry
     if @group.save
-      if group_params[:user_ids].length == 1
+      if group_params[:user_ids].length == 0
         @group.destroy
         flash[:alert] = "チャットメンバーを選んでください"
         render :new
@@ -43,7 +42,4 @@ class GroupsController < ApplicationController
     def group_params
       params.require(:group).permit(:name, user_ids: [])
     end
-    # def group_params
-    #   params.require(:group).permit(:name, :user_ids)
-    # end
 end

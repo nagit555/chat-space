@@ -1,10 +1,14 @@
 class MessagesController < ApplicationController
   def index
-#    @messages = Message.where(group_id: params[:group_id]).order('created_at ASC')
     @group = Group.find(params[:group_id])
     @message = Message.new
     @messages = @group.messages.includes(:user)
     @join_groups = Member.where(user_id: current_user.id)
+
+    respond_to do |format|
+      format.html { render :index }
+      format.json
+    end
   end
 
   def create

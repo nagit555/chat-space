@@ -44,7 +44,6 @@ $(function() {
       var html = buildMessageHTML(postedMessage);
       $('.GroupMessage').append(html);
       $('.GroupPost__text-form').val('');
-      console.log("test");
     })
     .fail(function() {
       alert('error');

@@ -43,7 +43,7 @@ $(function() {
     .done(function(postedMessage) {
       var html = buildMessageHTML(postedMessage);
       $('.GroupMessage').append(html);
-      $('.GroupPost__text-form').trigger('reset');
+      $('.GroupPost__text-form').val('');
     })
     .fail(function() {
       alert('error');

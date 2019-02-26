@@ -74,6 +74,7 @@ gem 'pry-byebug'
 gem 'pry-doc'
 
 gem 'carrierwave'
+gem 'fog-aws'
 gem 'mini_magick'
 
 group :production do

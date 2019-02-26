@@ -16,8 +16,8 @@ Gem::Specification.new do |s|
   s.homepage = "http://github.com/brianmario/mysql2".freeze
   s.licenses = ["MIT".freeze]
   s.rdoc_options = ["--charset=UTF-8".freeze]
-  s.rubygems_version = "3.0.2".freeze
+  s.rubygems_version = "2.7.6".freeze
   s.summary = "A simple, fast Mysql library for Ruby, binding to libmysql".freeze
 
-  s.installed_by_version = "3.0.2" if s.respond_to? :installed_by_version
+  s.installed_by_version = "2.7.6" if s.respond_to? :installed_by_version
 end

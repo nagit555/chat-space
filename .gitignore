@@ -18,7 +18,7 @@
 public/uploads/*
 
 # Ignore bundler gems.
-vendor/bundle
+vendor/bundle/*
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
